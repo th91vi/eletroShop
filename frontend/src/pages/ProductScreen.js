@@ -16,7 +16,7 @@ const ProductScreen = ({ match }) => {
     }
 
     fetchProduct()
-  }, [])
+  }, [match])
 
   return (
     <>
@@ -81,7 +81,7 @@ const ProductScreen = ({ match }) => {
 }
 
 ProductScreen.propTypes = {
-  match: PropTypes.number.isRequired,
+  match: PropTypes.object.isRequired,
 }
 
 export default ProductScreen
