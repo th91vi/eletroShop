@@ -6,7 +6,7 @@ import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap"
 import Rating from "../components/Rating"
 import Loader from "../components/Loader"
 import Message from "../components/Message"
-import { listProductDetails } from "../actions/productActions"
+import { listProductDetails } from "../store/actions/productActions"
 
 const ProductScreen = ({ match }) => {
   const dispatch = useDispatch()
