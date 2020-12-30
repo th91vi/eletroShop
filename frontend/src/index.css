@@ -10,3 +10,13 @@ main {
   display: inline-block;
   margin-left: 0.5rem;
 }
+
+.cart-title {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+.subtotal-title {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
