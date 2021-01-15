@@ -41,7 +41,6 @@ export const listProductDetails = (id) => async (dispatch) => {
       payload: data,
     })
   } catch (error) {
-    console.log(error.response)
     dispatch({
       type: PRODUCT_DETAILS_FAIL,
       payload:
