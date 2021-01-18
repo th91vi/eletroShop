@@ -4,7 +4,11 @@ import { Form, Button, Row, Col } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import Message from "../components/Message"
 import Loader from "../components/Loader"
-import { getUserDetails } from "../actions/userActions"
+import {
+  getUserDetails,
+  updateUserProfile,
+  hideSuccess,
+} from "../actions/userActions"
 
 const ProfileScreen = ({ history }) => {
   const [name, setName] = useState("")
@@ -20,6 +24,9 @@ const ProfileScreen = ({ history }) => {
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
+
+  const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
+  const { success } = userUpdateProfile
 
   useEffect(() => {
     if (!userInfo) {
@@ -40,7 +47,11 @@ const ProfileScreen = ({ history }) => {
     if (password !== confirmPassword) {
       setMessage("Passwords do not match")
     } else {
-      console.log("profile updated")
+      dispatch(updateUserProfile({ id: user._id, name, email, password }))
+
+      setTimeout(() => {
+        dispatch(hideSuccess())
+      }, 3000)
     }
   }
 
@@ -50,6 +61,7 @@ const ProfileScreen = ({ history }) => {
         <h2>Userprofile</h2>
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
+        {success && <Message variant="success">Profile updated</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
