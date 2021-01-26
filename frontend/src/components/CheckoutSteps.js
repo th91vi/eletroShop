@@ -47,10 +47,10 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
 }
 
 CheckoutSteps.propTypes = {
-  step1: PropTypes.string,
-  step2: PropTypes.string,
-  step3: PropTypes.string,
-  step4: PropTypes.string,
+  step1: PropTypes.bool,
+  step2: PropTypes.bool,
+  step3: PropTypes.bool,
+  step4: PropTypes.bool,
 }
 
 export default CheckoutSteps
