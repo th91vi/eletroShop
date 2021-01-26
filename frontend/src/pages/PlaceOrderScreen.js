@@ -32,6 +32,7 @@ const PlaceOrderScreen = ({ history }) => {
   const placeOrderHandler = () => {
     console.log("placeOrderHandler")
   }
+  console.log(useDispatch)
 
   return (
     <>
