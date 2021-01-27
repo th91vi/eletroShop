@@ -4,7 +4,7 @@ const Order = require('../models/orderModel');
 const addOrderItems = asyncHandler(async (req, res) => {
   const {
     orderItems,
-    shippingAdress,
+    shippingAddress,
     paymentMethod,
     itemsPrice,
     taxPrice,
@@ -18,7 +18,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
   } else {
     const order = new Order({
       orderItems,
-      shippingAdress,
+      user: req.user._id,
+      shippingAddress,
       paymentMethod,
       itemsPrice,
       taxPrice,

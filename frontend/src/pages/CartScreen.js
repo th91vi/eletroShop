@@ -123,7 +123,7 @@ const CartScreen = ({ match, location, history }) => {
 CartScreen.propTypes = {
   match: PropTypes.object.isRequired,
   history: PropTypes.object,
-  location: PropTypes.string,
+  location: PropTypes.object,
 }
 
 export default CartScreen
