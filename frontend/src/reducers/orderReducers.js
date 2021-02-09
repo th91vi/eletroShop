@@ -11,6 +11,7 @@ import {
   ORDER_PAY_SUCCESS,
   ORDER_USER_LIST_FAIL,
   ORDER_USER_LIST_REQUEST,
+  ORDER_USER_LIST_RESET,
   ORDER_USER_LIST_SUCCESS,
 } from "../constants/orderConstants"
 
@@ -99,6 +100,10 @@ export const orderUserListReducer = (state = { orders: [] }, action) => {
       return {
         loading: false,
         error: action.payload,
+      }
+    case ORDER_USER_LIST_RESET:
+      return {
+        orders: [],
       }
     default:
       return state
