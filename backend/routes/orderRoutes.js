@@ -4,6 +4,9 @@ const OrderController = require('../controllers/orderController');
 const AuthMiddleware = require('../middleware/authMiddleware');
 
 router.route('/').post(AuthMiddleware.protect, OrderController.addOrderItems);
+router
+  .route('/myorders')
+  .get(AuthMiddleware.protect, OrderController.getUserOrders);
 router.route('/:id').get(AuthMiddleware.protect, OrderController.getOrderById);
 router
   .route('/:id/pay')
