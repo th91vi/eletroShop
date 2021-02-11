@@ -17,4 +17,12 @@ router
   .get(AuthMiddleware.protect, UserController.getUserProfile)
   .put(AuthMiddleware.protect, UserController.updateUserProfile);
 
+  router
+    .route('/:id')
+    .delete(
+      AuthMiddleware.protect,
+      AuthMiddleware.isAdmin,
+      UserController.deleteSingleUser
+    );
+
 module.exports = router;

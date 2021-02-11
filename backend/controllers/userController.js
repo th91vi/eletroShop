@@ -97,10 +97,23 @@ const getAllUsers = asyncHandler(async (req, res) => {
   res.json(users);
 });
 
+const deleteSingleUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    await user.remove();
+    res.json({ messsage: 'User removed.' });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
+});
+
 module.exports = {
   authUser,
   registerUser,
   getUserProfile,
   updateUserProfile,
   getAllUsers,
+  deleteSingleUser,
 };
