@@ -23,6 +23,16 @@ router
       AuthMiddleware.protect,
       AuthMiddleware.isAdmin,
       UserController.deleteSingleUser
+    )
+    .get(
+      AuthMiddleware.protect,
+      AuthMiddleware.isAdmin,
+      UserController.getUserById
+    )
+    .put(
+      AuthMiddleware.protect,
+      AuthMiddleware.isAdmin,
+      UserController.updateUser
     );
 
 module.exports = router;
