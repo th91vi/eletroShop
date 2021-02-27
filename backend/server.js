@@ -25,7 +25,7 @@ app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 );
 
-app.use('/uploads', express.static(path.join(__dirname, '/assets/images')));
+app.use('/uploads', express.static(path.join('uploads')));
 
 app.use(errors.notFound);
 app.use(errors.errorHandler);
