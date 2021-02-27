@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { withRouter } from "react-router-dom"
 import PropTypes from "prop-types"
 import { Form, Button } from "react-bootstrap"
 
@@ -8,7 +9,7 @@ const SearchBox = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault()
     if (keyword.trim()) {
-      history.push(`/search/${keyword}`)
+      history.push(`/search/${encodeURIComponent(keyword)}`)
     } else {
       history.push("/")
     }
@@ -34,4 +35,4 @@ SearchBox.propTypes = {
   history: PropTypes.object,
 }
 
-export default SearchBox
+export default withRouter(SearchBox)
