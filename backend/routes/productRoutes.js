@@ -12,6 +12,9 @@ router
     ProductController.createProduct
   );
 router
+  .route('/:id/reviews')
+  .post(AuthMiddleware.protect, ProductController.createNewReview);
+router
   .route('/:id')
   .get(ProductController.getProductById)
   .delete(AuthMiddleware.protect, ProductController.deleteProduct)
