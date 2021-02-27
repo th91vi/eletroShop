@@ -31,6 +31,7 @@ import {
   ORDER_DETAILS_RESET,
 } from "../constants/orderConstants"
 import { CART_RESET } from "../constants/cartConstants"
+import { PRODUCT_CREATE_REVIEW_RESET } from "../constants/productConstants"
 
 const config = {
   headers: {
@@ -77,6 +78,7 @@ export const logout = () => async (dispatch) => {
   dispatch({ type: ORDER_USER_LIST_RESET })
   dispatch({ type: USER_LIST_RESET })
   dispatch({ type: ORDER_DETAILS_RESET })
+  dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
 }
 
 export const register = (name, email, password) => async (dispatch) => {
