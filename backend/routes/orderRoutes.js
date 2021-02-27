@@ -18,5 +18,8 @@ router.route('/:id').get(AuthMiddleware.protect, OrderController.getOrderById);
 router
   .route('/:id/pay')
   .put(AuthMiddleware.protect, OrderController.updateOrderToPaid);
+router
+  .route('/:id/deliver')
+  .put(AuthMiddleware.protect, AuthMiddleware.isAdmin, OrderController.updateOrderToDelivered);
 
 module.exports = router;
