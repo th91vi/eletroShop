@@ -2,35 +2,47 @@ const asyncHandler = require('express-async-handler');
 const Product = require('../models/productModel');
 
 const getProducts = asyncHandler(async (req, res) => {
+  const pageSize = 8;
+  const page = Number(req.query.pageNumber) || 1;
   const keyword = req.query.keyword
     ? {
         $or: [
           {
             name: {
-              $regex: req.query.keyword.replace(/[-[\]{}()*+?.,\\/^$|#\s]/g, '\\$&'),
+              $regex: req.query.keyword.replace(
+                /[-[\]{}()*+?.,\\/^$|#\s]/g,
+                '\\$&'
+              ),
               $options: 'i',
             },
           },
           {
             brand: {
-              $regex: req.query.keyword.replace(/[-[\]{}()*+?.,\\/^$|#\s]/g, '\\$&'),
-              $options: "i",
+              $regex: req.query.keyword.replace(
+                /[-[\]{}()*+?.,\\/^$|#\s]/g,
+                '\\$&'
+              ),
+              $options: 'i',
             },
           },
           {
             category: {
-              $regex: req.query.keyword.replace(/[-[\]{}()*+?.,\\/^$|#\s]/g, '\\$&'),
-              $options: "i",
+              $regex: req.query.keyword.replace(
+                /[-[\]{}()*+?.,\\/^$|#\s]/g,
+                '\\$&'
+              ),
+              $options: 'i',
             },
           },
         ],
       }
     : {};
 
-  console.log(req.query.keyword);
-
-  const products = await Product.find({ ...keyword });
-  res.json(products);
+  const count = await Product.countDocuments({ ...keyword });
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 const getProductById = asyncHandler(async (req, res) => {

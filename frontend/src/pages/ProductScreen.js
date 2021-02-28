@@ -55,19 +55,6 @@ const ProductScreen = ({ history, match }) => {
     )
   }
 
-  // console.log(
-  //   createProductReview,
-  //   PRODUCT_CREATE_REVIEW_RESET,
-  //   rating,
-  //   setRating,
-  //   comment,
-  //   setComment,
-  //   loadingReviewCreate,
-  //   errorProductReview,
-  //   successProductReview,
-  //   userInfo
-  // )
-
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
